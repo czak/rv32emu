@@ -1209,11 +1209,11 @@ int64_t get_clock()
 }
 
 
-void riscv_cpu_interp_x32()
+void riscv_cpu_interp_x32(int n_cycles)
 {
     /* we use a single execution loop to keep a simple control flow for
      * emscripten */
-    while (machine_running) {
+    while (machine_running && n_cycles--) {
 #if 1
         /* update timer, assuming 10 MHz clock (100 ns period) for the mtime
          * counter */

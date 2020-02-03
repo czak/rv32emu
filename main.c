@@ -21,7 +21,7 @@ extern uint32_t pc;
 extern uint32_t reg[32];
 extern uint32_t ram_start;
 
-void riscv_cpu_interp_x32();
+void riscv_cpu_interp_x32(int n_cycles);
 
 int main()
 {
@@ -30,5 +30,5 @@ int main()
 
     ram_start = pc = 0x10054;
     reg[2] = 0x10054 + RAM_SIZE;  // stack pointer
-    riscv_cpu_interp_x32();
+    riscv_cpu_interp_x32(100);
 }
