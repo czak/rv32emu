@@ -17,14 +17,8 @@
 #include <time.h>
 #include <unistd.h>
 
-/* uncomment this for an instruction trace and other debug outputs */
-// #define DEBUG_OUTPUT
-// #define DEBUG_EXTRA
-
-#define STRICT_RV32I
 #define FALSE (0)
 #define TRUE (-1)
-
 
 #define debug_out(...)
 
