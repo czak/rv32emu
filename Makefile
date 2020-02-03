@@ -1,6 +1,6 @@
 BINS = emu-rv32i test1
 
-CROSS_COMPILE = riscv-none-embed-
+CROSS_COMPILE = riscv32-unknown-elf-
 RV32I_CFLAGS = -march=rv32i -mabi=ilp32 -O3 -nostdlib
 
 CFLAGS = -O3 -Wall
