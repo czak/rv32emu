@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "emu-rv32i.h"
+
 // This is test1.bin extracted using:
 // xxd -i test1.bin
 unsigned char test1_bin[] = {
@@ -12,23 +14,12 @@ unsigned char test1_bin[] = {
     0x53, 0x43, 0x2d, 0x56, 0x21, 0x0a, 0x00};
 unsigned int test1_bin_len = 51;
 
-/* emulate RAM */
-#define RAM_SIZE 0x10000
-extern uint8_t ram[RAM_SIZE];
-
-/* CPU state */
-extern uint32_t pc;
-extern uint32_t reg[32];
-extern uint32_t ram_start;
-
-void riscv_cpu_interp_x32(int n_cycles);
-
 int main()
 {
     // load program into ram
     memcpy(ram, test1_bin, test1_bin_len);
 
     ram_start = pc = 0x10054;
-    reg[2] = 0x10054 + RAM_SIZE;  // stack pointer
+    reg[2] = 0x10054 + RAM_SIZE;  // init stack pointer
     riscv_cpu_interp_x32(100);
 }
